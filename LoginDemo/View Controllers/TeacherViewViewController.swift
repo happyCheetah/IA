@@ -20,6 +20,7 @@ class TeacherViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSnapShotListener()
+        averageSlider.isEnabled = false
     }
     
     func addSnapShotListener() {

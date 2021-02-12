@@ -25,12 +25,12 @@ class ClassCell: UITableViewCell {
         
         if cell.displayForTeacher == "0" {
             //setup UI for student
-            self.joinSessionButton.isHidden = false
+//            self.joinSessionButton.isHidden = false
             
         }
         else {
             //setup UI for teacher
-            
+//            self.isUserInteractionEnabled = 
             self.startSessionButton.isHidden = false
         }
     }
