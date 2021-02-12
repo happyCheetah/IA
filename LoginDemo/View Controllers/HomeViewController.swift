@@ -64,7 +64,7 @@ class HomeViewController: UIViewController {
         self.classID = newClassID
     }
     
-    /* A function that retrieves classes associated with user from Firebase. Classes storedin 'classes: [Class]'  */
+    /* A function that sets up UI elements and retrieves classes associated with user from Firebase. Classes stored in 'classes: [Class]'  */
     func loadClasses() {
         // clear array that may have data from a previous call.
         // a default classID is provided
@@ -112,9 +112,9 @@ class HomeViewController: UIViewController {
                             //cast type 'any'. if we get nil, supplied "err" as default value
                             let currentClassTeacherName = classData["teacherName"] as? String ?? "FIELDNOTPRESENT"
                             let currentClassName = classData["className"] as? String ?? "FIELDNOTPRESENT"
-                            let currentClassIsLive = classData["isLive"] as? Bool ?? false
-                            let currentClass = Class.init(teacherName: currentClassTeacherName, className: currentClassName, isLive: currentClassIsLive, displayForTeacher: status)
-                            
+
+                            let currentClass = Class.init(teacherName: currentClassTeacherName, className: currentClassName, displayForTeacher: status)
+                            print(currentClassName)
                             self.classes.append(currentClass)
                         }
                     }

@@ -20,16 +20,18 @@ class ClassCell: UITableViewCell {
         self.teacherName.text = cell.teacherName
         self.className.text = cell.className
         
+        self.joinSessionButton.isHidden = true
+        self.startSessionButton.isHidden = true
+        
         if cell.displayForTeacher == "0" {
             //setup UI for student
-            self.startSessionButton.isHidden = true
+            self.joinSessionButton.isHidden = false
             
-            if cell.isLive { self.startSessionButton.isEnabled = false }
-            else { self.joinSessionButton.isEnabled = false; self.joinSessionButton.setTitle("Inactive", for: .normal)}
         }
         else {
             //setup UI for teacher
-            self.joinSessionButton.isHidden = true
+            
+            self.startSessionButton.isHidden = false
         }
     }
     
