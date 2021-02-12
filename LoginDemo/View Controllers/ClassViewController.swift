@@ -22,9 +22,15 @@ class ClassViewController: UIViewController, UITextFieldDelegate {
     
     var uid : String?
     var classID: String?
+    var className: String?
     
     init(classID: String) {
         self.classID = classID
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(className: String){
+        self.className = className
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -63,7 +69,7 @@ class ClassViewController: UIViewController, UITextFieldDelegate {
         print("passed")
         print(value)
 //        db.collection("classes").document("5AMKh8fCIFpWTCxnNCYW").setData(["test": "test"])
-        db.collection("classes").document("5AMKh8fCIFpWTCxnNCYW").setData(["session": [uid : ["\(value)", "nil", "nil"]]], merge: true) { err in
+        db.collection("classes").document(classID as! String).setData(["session": [uid : ["\(value)", "nil", "nil"]]], merge: true) { err in
             print("passed")
             if let err = err {
                     print("Error updating document: \(err)")
@@ -86,8 +92,7 @@ class ClassViewController: UIViewController, UITextFieldDelegate {
         }
         
         //send chosen emoji to firebase
-//        Firestore.firestore().collection("classes").document("5AMKh8fCIFpWTCxnNCYW").setData(["session": [uid : ["nil", emoji, "nil"]]], merge: true )
-        Firestore.firestore().collection("classes").document("30FXgRd14pP5bQUEioqx").setData(["hi":"hi"]) { err in
+        Firestore.firestore().collection("classes").document(classID as! String).setData(["session": [uid : ["nil", emoji, "nil"]]], merge: true ) { err in
             if let err = err {
                     print("Error updating document: \(err)")
                 } else {

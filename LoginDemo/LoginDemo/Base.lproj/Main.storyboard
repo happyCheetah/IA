@@ -364,7 +364,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-Za-Zf1">
-                                <rect key="frame" x="20" y="118" width="96" height="20"/>
+                                <rect key="frame" x="29" y="118" width="96" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Create Class">
                                     <color key="titleColor" name="AccentColor"/>
@@ -374,9 +374,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seF-HV-UE0">
-                                <rect key="frame" x="252" y="118" width="78" height="20"/>
+                                <rect key="frame" x="261" y="118" width="44" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="Join Class">
+                                <state key="normal" title="Enroll">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
                                 <connections>
@@ -384,7 +384,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5am-ph-nZT">
-                                <rect key="frame" x="159" y="113" width="52" height="30"/>
+                                <rect key="frame" x="168" y="113" width="52" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Reload">
                                     <color key="titleColor" name="AccentColor"/>
@@ -406,7 +406,7 @@
                             <constraint firstItem="THm-Mh-zWP" firstAttribute="leading" secondItem="6a2-fR-qfs" secondAttribute="leading" id="X5T-zN-hR3"/>
                             <constraint firstItem="THm-Mh-zWP" firstAttribute="top" secondItem="6a2-fR-qfs" secondAttribute="top" constant="80" id="aiy-6S-bvW"/>
                             <constraint firstItem="5am-ph-nZT" firstAttribute="top" secondItem="6a2-fR-qfs" secondAttribute="top" constant="25" id="gCc-2p-L2q"/>
-                            <constraint firstItem="6a2-fR-qfs" firstAttribute="trailing" secondItem="seF-HV-UE0" secondAttribute="trailing" constant="60" id="j5Y-9a-yLZ"/>
+                            <constraint firstItem="6a2-fR-qfs" firstAttribute="trailing" secondItem="seF-HV-UE0" secondAttribute="trailing" constant="85" id="j5Y-9a-yLZ"/>
                             <constraint firstItem="6a2-fR-qfs" firstAttribute="trailing" secondItem="THm-Mh-zWP" secondAttribute="trailing" id="m08-aP-YK4"/>
                             <constraint firstItem="6a2-fR-qfs" firstAttribute="bottom" secondItem="THm-Mh-zWP" secondAttribute="bottom" id="sWv-1V-wAs"/>
                             <constraint firstItem="seF-HV-UE0" firstAttribute="leading" secondItem="5am-ph-nZT" secondAttribute="trailing" constant="41" id="wff-GY-j61"/>
@@ -655,7 +655,7 @@
         <!--Join A Class-->
         <scene sceneID="l6k-fZ-bo4">
             <objects>
-                <viewController title="Join A Class" id="0fV-lp-YO2" customClass="JoinClassViewController" customModule="LoginDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Join A Class" id="0fV-lp-YO2" customClass="EnrollinClassViewController" customModule="LoginDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q4g-g7-nMy">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -684,7 +684,7 @@
                             <constraint firstAttribute="trailing" secondItem="Uwa-im-Zmn" secondAttribute="trailing" constant="20" id="v1P-y1-zed"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Join A Class" id="gOJ-oZ-Yrq"/>
+                    <navigationItem key="navigationItem" title="Enroll" id="gOJ-oZ-Yrq"/>
                     <connections>
                         <outlet property="classPicker" destination="TAg-cv-tEx" id="tit-hz-Kpu"/>
                     </connections>

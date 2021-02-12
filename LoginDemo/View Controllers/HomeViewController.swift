@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     var isTeacher: Bool?
     var lastName: String?
     var userID: String?
-    var classsName : String?
+    var className : String?
     // classID is the name of a class's document - assigned automatically by Firestore
     var classID : String?
     
@@ -57,6 +57,10 @@ class HomeViewController: UIViewController {
             
             self.lastName = dataDescription!["lastname"] as? String ?? "Guo"
         }
+    }
+    
+    func loadClassView(className: String) {
+        
     }
     
     /* A setter function for the classID variable. */
@@ -111,10 +115,11 @@ class HomeViewController: UIViewController {
                             self.classID = classDocument.documentID
                             //cast type 'any'. if we get nil, supplied "err" as default value
                             let currentClassTeacherName = classData["teacherName"] as? String ?? "FIELDNOTPRESENT"
-                            let currentClassName = classData["className"] as? String ?? "FIELDNOTPRESENT"
+//                            let currentClassName = classData["className"] as? String ?? "FIELDNOTPRESENT"
+                            self.className = classData["className"] as? String ?? "FIELDNOTPRESENT"
 
-                            let currentClass = Class.init(teacherName: currentClassTeacherName, className: currentClassName, displayForTeacher: status)
-                            print(currentClassName)
+                            let currentClass = Class.init(teacherName: currentClassTeacherName, className: self.className!, displayForTeacher: status)
+                   
                             self.classes.append(currentClass)
                         }
                     }
@@ -130,7 +135,7 @@ class HomeViewController: UIViewController {
         if segue.identifier == "homeToClass" {
             guard let classVC = segue.destination as? ClassViewController else { return }
             classVC.classID = self.classID
-            classVC.title = classsName
+            classVC.title = className
         }
         
         if segue.identifier == "homeToCreate" {
@@ -140,7 +145,7 @@ class HomeViewController: UIViewController {
         }
         
         if segue.identifier == "homeToJoin" {
-            guard let joinVC = segue.destination as? JoinClassViewController else { return }
+            guard let joinVC = segue.destination as? EnrollinClassViewController else { return }
             joinVC.uid = self.userID
         }
     }
@@ -167,5 +172,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setCell(cell: klass)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        className = classes[indexPath.row].className
+        performSegue(withIdentifier: "homeToClass", sender: self)
+
     }
 }

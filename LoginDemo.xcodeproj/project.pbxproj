@@ -28,7 +28,7 @@
 		32968FCC25ADD40A00B6F3AD /* TeacherViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32968FCB25ADD40A00B6F3AD /* TeacherViewViewController.swift */; };
 		329E82D5258E1648007F0AE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 329E82D4258E1648007F0AE3 /* GoogleService-Info.plist */; };
 		32C64BE925D61723006A0910 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C64BE825D61723006A0910 /* TabBarController.swift */; };
-		32D7D80D25B1287F0022C73A /* JoinClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D7D80C25B1287E0022C73A /* JoinClassViewController.swift */; };
+		32D7D80D25B1287F0022C73A /* EnrollinClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D7D80C25B1287E0022C73A /* EnrollinClassViewController.swift */; };
 		32EFC7B12594E38E00F0CF8F /* VideoPlayerLooped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EFC7B02594E38E00F0CF8F /* VideoPlayerLooped.swift */; };
 		8E1643BA332F1FFC6FCB52EB /* Pods_LoginDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAA813D7F50AB632797B877 /* Pods_LoginDemo.framework */; };
 		E28A4CFCF759D625598BEF9F /* Pods_LoginDemo_LoginDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AE80054C40B97A2E66DFB4 /* Pods_LoginDemo_LoginDemoUITests.framework */; };
@@ -80,7 +80,7 @@
 		32968FCB25ADD40A00B6F3AD /* TeacherViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewViewController.swift; sourceTree = "<group>"; };
 		329E82D4258E1648007F0AE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32C64BE825D61723006A0910 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		32D7D80C25B1287E0022C73A /* JoinClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinClassViewController.swift; sourceTree = "<group>"; };
+		32D7D80C25B1287E0022C73A /* EnrollinClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollinClassViewController.swift; sourceTree = "<group>"; };
 		32EFC7B02594E38E00F0CF8F /* VideoPlayerLooped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerLooped.swift; sourceTree = "<group>"; };
 		361A1E773C39A6241E707B58 /* Pods-LoginDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginDemo.release.xcconfig"; path = "Target Support Files/Pods-LoginDemo/Pods-LoginDemo.release.xcconfig"; sourceTree = "<group>"; };
 		36C3E5C2215F3B628BD8E70F /* Pods-LoginDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-LoginDemoTests/Pods-LoginDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 				3257356E25AB33C70044EEC8 /* ClassViewController.swift */,
 				32968FCB25ADD40A00B6F3AD /* TeacherViewViewController.swift */,
 				3248A99225AF5786000BDD5D /* CreateClassViewController.swift */,
-				32D7D80C25B1287E0022C73A /* JoinClassViewController.swift */,
+				32D7D80C25B1287E0022C73A /* EnrollinClassViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -491,7 +491,7 @@
 				3248A99325AF5786000BDD5D /* CreateClassViewController.swift in Sources */,
 				32EFC7B12594E38E00F0CF8F /* VideoPlayerLooped.swift in Sources */,
 				320E72B0258DF44C00927E30 /* AppDelegate.swift in Sources */,
-				32D7D80D25B1287F0022C73A /* JoinClassViewController.swift in Sources */,
+				32D7D80D25B1287F0022C73A /* EnrollinClassViewController.swift in Sources */,
 				3217A7BA258E110700771B6A /* Utilities.swift in Sources */,
 				322B2CDF259898EA00CD426B /* ClassCell.swift in Sources */,
 				3257356F25AB33C70044EEC8 /* ClassViewController.swift in Sources */,

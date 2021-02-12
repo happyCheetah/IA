@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class JoinClassViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class EnrollinClassViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     //*** IB OUTLET ***//
     @IBOutlet weak var classPicker: UIPickerView!
@@ -45,7 +45,7 @@ class JoinClassViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             }
             self.classPicker.reloadAllComponents()
             print(self.pickerData)
-        }
+        } 
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,6 +70,22 @@ class JoinClassViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let selected = classPicker.selectedRow(inComponent: 0)
         let classID = classIDs[selected]
         
+        //check if student has already joined by querying students array
+        Firestore.firestore().collection("classes").document(classID).getDocument { (document, error) in
+            let data = document?.data()
+            let studentArray = data!["students"] as! NSArray
+            if studentArray.contains(self.uid) {
+                var dialogMessage = UIAlertController(title: "Already Enrolled!", message: "You are already enrolled in this class!", preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
+                    print("ok tapped")
+                })
+                
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
+                return
+            }
+        }
         Firestore.firestore().collection("classes").document(classID).updateData(["students": FieldValue.arrayUnion([uid as! String])])
     }
 }
