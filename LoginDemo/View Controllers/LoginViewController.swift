@@ -30,10 +30,18 @@ class LoginViewController: UIViewController {
     
     //*** IB ACTION ***//
     @IBAction func loginTapped(_ sender: Any) {
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            errorLabel.text = "Please enter username and password"
+            self.errorLabel.alpha = 1
+            return
+        }
+        
+
         
         //process data such that whitespaces and new lines are removed
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         
         //using firebase auth, sign in user.
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in

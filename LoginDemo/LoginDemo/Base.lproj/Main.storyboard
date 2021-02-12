@@ -161,7 +161,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="61M-hL-I8L">
-                                <rect key="frame" x="40" y="117.99999999999997" width="310" height="491.33333333333326"/>
+                                <rect key="frame" x="40" y="117.99999999999997" width="310" height="421.33333333333326"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S02-C7-WaA">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -183,20 +183,15 @@
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-vg-2pw">
-                                        <rect key="frame" x="0.0" y="280" width="310" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sQN-cH-7ib">
-                                        <rect key="frame" x="0.0" y="350" width="310" height="32"/>
+                                        <rect key="frame" x="0.0" y="280" width="310" height="32"/>
                                         <segments>
                                             <segment title="student"/>
                                             <segment title="teacher"/>
                                         </segments>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlU-qY-sYU">
-                                        <rect key="frame" x="0.0" y="401" width="310" height="50"/>
+                                        <rect key="frame" x="0.0" y="331" width="310" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="SoZ-gB-Toz"/>
                                         </constraints>
@@ -209,7 +204,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD3-lj-CrZ">
-                                        <rect key="frame" x="0.0" y="471" width="310" height="20.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="401" width="310" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -218,7 +213,6 @@
                                 <constraints>
                                     <constraint firstItem="cke-iX-BnQ" firstAttribute="height" secondItem="S02-C7-WaA" secondAttribute="height" id="8B4-ow-IDE"/>
                                     <constraint firstItem="Unr-8Z-O1a" firstAttribute="height" secondItem="S02-C7-WaA" secondAttribute="height" id="8fo-aH-RIH"/>
-                                    <constraint firstItem="aZc-vg-2pw" firstAttribute="height" secondItem="BX1-vQ-NQc" secondAttribute="height" id="Cuz-28-2j3"/>
                                     <constraint firstItem="nlU-qY-sYU" firstAttribute="height" secondItem="S02-C7-WaA" secondAttribute="height" id="MmO-Zt-7j7"/>
                                     <constraint firstItem="BX1-vQ-NQc" firstAttribute="height" secondItem="S02-C7-WaA" secondAttribute="height" id="n3L-Ty-P4h"/>
                                 </constraints>
@@ -234,7 +228,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="TQP-QO-0aU"/>
                     <connections>
-                        <outlet property="IDNumberTextField" destination="aZc-vg-2pw" id="Urk-Zm-iEB"/>
                         <outlet property="emailTextField" destination="cke-iX-BnQ" id="yvH-TD-LSr"/>
                         <outlet property="errorLabel" destination="BD3-lj-CrZ" id="Ly8-gd-dhE"/>
                         <outlet property="firstNameTextField" destination="S02-C7-WaA" id="aFw-bj-pwB"/>
