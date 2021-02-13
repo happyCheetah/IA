@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3B8CAC3956E59F928387D0C6310E3B37"
-               BuildableName = "gRPCCertificates-Cpp.bundle"
-               BlueprintName = "gRPC-C++-gRPCCertificates-Cpp"
+               BlueprintIdentifier = "241CD444A423123B7659CACA416660B6"
+               BuildableName = "Pods_Temperature_TemperatureUITests.framework"
+               BlueprintName = "Pods-Temperature-TemperatureUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
