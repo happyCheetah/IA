@@ -31,7 +31,7 @@ class ClassCell: UITableViewCell {
         else {
             //setup UI for teacher
 //            self.isUserInteractionEnabled = 
-            self.startSessionButton.isHidden = false
+//            self.startSessionButton.isHidden = false
         }
     }
     

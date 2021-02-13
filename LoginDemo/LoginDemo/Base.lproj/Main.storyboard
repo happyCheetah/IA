@@ -321,7 +321,7 @@
                                                     <rect key="frame" x="266" y="72" width="101" height="30.666666666666671"/>
                                                     <state key="normal" title="Start Session"/>
                                                     <connections>
-                                                        <segue destination="arV-Ra-Lbi" kind="show" id="56d-fi-HsR"/>
+                                                        <segue destination="arV-Ra-Lbi" kind="show" identifier="homeToTeach" id="56d-fi-HsR"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao0-er-Ili">

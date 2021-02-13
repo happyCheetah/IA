@@ -148,6 +148,12 @@ class HomeViewController: UIViewController {
             guard let joinVC = segue.destination as? EnrollinClassViewController else { return }
             joinVC.uid = self.userID
         }
+        
+        if segue.identifier == "homeToTeach" {
+            guard let teachVC = segue.destination as? TeacherViewViewController else {return}
+            teachVC.classID = self.classID
+            teachVC.title = className
+        }
     }
 }
 
@@ -175,9 +181,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        className = classes[indexPath.row].className
-        performSegue(withIdentifier: "homeToClass", sender: self)
+        if isTeacher == false {
+            tableView.deselectRow(at: indexPath, animated: true)
+            className = classes[indexPath.row].className
+            performSegue(withIdentifier: "homeToClass", sender: self)
+        }
+        else {
+            tableView.deselectRow(at: indexPath, animated: true)
+            className = classes[indexPath.row].className
+            performSegue(withIdentifier: "homeToTeach", sender: self)
+        }
 
     }
 }

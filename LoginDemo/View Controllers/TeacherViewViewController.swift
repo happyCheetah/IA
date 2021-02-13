@@ -15,6 +15,9 @@ class TeacherViewViewController: UIViewController {
     @IBOutlet weak var thumbsUpLabel: UILabel!
     @IBOutlet weak var thumbsDownLabel: UILabel!
     
+    var classID: String?
+    var className: String?
+    
     //https://www.youtube.com/watch?v=oeXgHKhXxdQ&feature=emb_title&ab_channel=JohnGallaugher firestore listener
     
     override func viewDidLoad() {
