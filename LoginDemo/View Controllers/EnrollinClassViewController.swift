@@ -28,16 +28,16 @@ class EnrollinClassViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     //*** IB OUTLETS ***///
     @IBAction func joinClassTapped(_ sender: Any) {
-        //get current selection from pickerview
+        // Get current selection from pickerview
         let selected = classPicker.selectedRow(inComponent: 0)
         let classID = classIDs[selected]
 
-        //check if student has already joined by querying participants array
+        // Check if student has already joined by querying participants array
         Firestore.firestore().collection("classes").document(classID).getDocument { (document, error) in
             let data = document?.data()
             let studentArray = data!["participants"] as! NSArray
             if studentArray.contains(self.uid!) {
-                //Display alert
+                // Display alert that user is already enrolled
                 let alreadyEnrolledDialogMessage = UIAlertController(title: "Already Enrolled!", message: "You are already enrolled in this class!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Got it!", style: .default, handler: nil)
                 alreadyEnrolledDialogMessage.addAction(ok)
@@ -45,9 +45,9 @@ class EnrollinClassViewController: UIViewController, UIPickerViewDelegate, UIPic
                 return
             }
             else {
-                //Add student to chosen class's student list
+                // Add student to chosen class's student list
                 Firestore.firestore().collection("classes").document(classID).updateData(["participants": FieldValue.arrayUnion([self.uid!])])
-                //Display alert acknowledging enrollement
+                // Display alert acknowledging enrollement
                 let enrolledDialogMessage = UIAlertController(title: "Enrolled!", message: "Please go back to My Classes and Reload.", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Got it!", style: .default, handler: nil)
                 enrolledDialogMessage.addAction(ok)

@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     //*** IB OUTLET ***//
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var reloadButton: UIButton!
-    @IBOutlet weak var joinClassButton: UIButton!
+    @IBOutlet weak var enrollButton: UIButton!
     @IBOutlet weak var addClassButton: UIButton!
     
     //*** VARS ***//
@@ -52,50 +52,49 @@ class HomeViewController: UIViewController {
     }
     
     func loadStatus() {
+        //Query Firestore for user's document
         Firestore.firestore().collection("users").document(userID!).getDocument { (document, error) in
+            //If Firestore returns an error.
             if error != nil {
                 print(error!)
                 return
             }
             else {
                 let dataDescription = document?.data()
-                //identify if user is student or teacher
+                //Identify if user is student or teacher
                 let status = dataDescription!["status"] as? String ?? "0"
                 if status == "0" {
-                    print(">>>> UI FOR STUDENT")
                     self.isTeacher = false
                     self.addClassButton.isHidden = true
                 }
                 else {
-                    print(">>>> UI FOR TEACHER")
                     self.isTeacher = true
-                    self.joinClassButton.isHidden = true
+                    self.enrollButton.isHidden = true
                 }
             }
         }
     }
     
     func loadClasses(){
+        // Clear variables of data from previous call of loadClasses()
         classes = []
         classIDArray = []
-//        let user = Auth.auth().currentUser
-//        let uid = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
+        
+        // Query Firestore for class documents that are associated with current user
         Firestore.firestore().collection("classes").whereField("participants", arrayContains: userID!).getDocuments { (querySnapshot, error) in
-            // http://www.swiftarchive.org/optional-binding-if-let-x-x-td409.html explanation of if let x = x
             if let error = error {
                 print("Error was:  \(error)")
                 return
             }
             else {
-                // Using optional binding to ensure that querySnapshot references something https://www.youtube.com/watch?v=bWqxRBxI51Q&ab_channel=totaltraining
                 guard let snap = querySnapshot else {
                     return
                 }
-                // snap.documents is an array containing multiple class documents. Each class is associated with the user. Data is extracted from each document and used to instantiate a Class object. The class object is appended to classes:[Class] array.
+                // snap.documents is an array containing multiple class documents that we know to be associated with the current user. Data from each document is stored in variables, which are in turn used to instantiate a Class object. The class object is appended to classes:[Class] array, which will populate the table view.
                 for classDocument in snap.documents {
                     let classData = classDocument.data()
                     self.classID = classDocument.documentID
-                    //cast type 'any'. if we get nil, supplied "err" as default value
+
                     let currentClassTeacherName = classData["teacherName"] as? String ?? "FIELDNOTPRESENT"
                     self.className = classData["className"] as? String ?? "FIELDNOTPRESENT"
 
@@ -108,64 +107,6 @@ class HomeViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
-    
-    
-//    /* A function that sets up UI elements and retrieves classes associated with user from Firebase. Classes stored in 'classes: [Class]'  */
-//    func loadMyClasses() {
-//        // clear array that may have data from a previous call.
-//        classes = []
-//        let user = Auth.auth().currentUser
-//        let uid = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
-//
-//        //query for current user's document
-//        Firestore.firestore().collection("users").document(uid).getDocument { (document, error) in
-//            if error != nil {
-//                print(error!)
-//                return
-//            }
-//            else {
-//                let dataDescription = document?.data()
-//                //identify if user is student or teacher
-//                let status = dataDescription!["status"] as? String ?? "0"
-//                if status == "0" {
-//                    self.isTeacher = false
-//                }
-//                else {
-//                    self.isTeacher = true
-//                }
-//
-//                // Asynchronous queries: https://firebase.googleblog.com/2018/07/swift-closures-and-firebase-handling.html
-//                Firestore.firestore().collection("classes").whereField("students", arrayContains: uid).getDocuments { (querySnapshot, error) in
-//                    // http://www.swiftarchive.org/optional-binding-if-let-x-x-td409.html explanation of if let x = x
-//                    if let error = error {
-//                        print("Error was:  \(error)")
-//                        return
-//                    }
-//                    else {
-//                        // Using optional binding to ensure that querySnapshot references something https://www.youtube.com/watch?v=bWqxRBxI51Q&ab_channel=totaltraining
-//                        guard let snap = querySnapshot else {
-//                            return
-//                        }
-//                        // snap.documents is an array containing multiple class documents. Each class is associated with the user. Data is extracted from each document and used to instantiate a Class object. The class object is appended to classes:[Class] array.
-//                        for classDocument in snap.documents {
-//                            let classData = classDocument.data()
-//                            self.classID = classDocument.documentID
-//                            //cast type 'any'. if we get nil, supplied "err" as default value
-//                            let currentClassTeacherName = classData["teacherName"] as? String ?? "FIELDNOTPRESENT"
-//                            self.className = classData["className"] as? String ?? "FIELDNOTPRESENT"
-//
-//                            let currentClass = Class.init(teacherName: currentClassTeacherName, className: self.className!)
-//
-//                            self.classes.append(currentClass)
-//                            self.classIDArray.append(classDocument.documentID)
-//                        }
-//                    }
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
-//    }
 
     /* Function that sends data to next view controller with a segue */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -186,7 +127,7 @@ class HomeViewController: UIViewController {
         }
         
         if segue.identifier == "homeToTeach" {
-            guard let teachVC = segue.destination as? TeacherViewViewController else {return}
+            guard let teachVC = segue.destination as? TeacherViewViewController else { return }
             teachVC.classID = self.classID
             teachVC.title = className
         }

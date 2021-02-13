@@ -31,7 +31,7 @@ class TeacherViewViewController: UIViewController {
             /* Code below will execute when any data in current document in changed */
             var sliderValueArray:[String] = []
             var emojiArray:[String] = []
-            print("1")
+            
             guard let document = documentSnapshot else {
                 print("Error: \(error!)")
                 return
@@ -40,36 +40,30 @@ class TeacherViewViewController: UIViewController {
                 print("Document empty")
                 return
             }
-            
-            //
-            let session = data["feedback"] as! NSDictionary
-            print("2")
-            for (key, value) in session {
+
+            let feedbackDictionary = data["feedback"] as! NSDictionary
+            for (key, _) in feedbackDictionary {
                 //compile all the tings of index 0
-                let studentID = session[key] as! NSArray
-                let zeroth = studentID[0] as! String
-                let first = studentID[1] as! String
+                let studentFedbackArray = feedbackDictionary[key] as! NSArray
+                let feedbackAtZerothIndex = studentFedbackArray[0] as! String
+                let feedbackAtFirstIndex = studentFedbackArray[1] as! String
                 
-                if zeroth == "nil" && first == "nil" {
+                // When the class is first created, a feedback of array of ['nil','nil'] is used to instantiate the map, and should be ignored in this calculation
+                if feedbackAtZerothIndex == "nil" && feedbackAtFirstIndex == "nil" {
                     continue
                 }
-                else if zeroth != "nil" {
-                    //meaninful content is slider
-                    //convert string to double
-                    if zeroth == "👍" || zeroth == "👎" { emojiArray.append(zeroth) }
-                    else { sliderValueArray.append(zeroth) }
-                    
+                // Only one type of feedback per student is stored by the server. Of the two index array, we must find which index stores the feedback. Slider values are always written to the zeroth index, while emojis are written to the first index.
+                // Case for value being slider value
+                else if feedbackAtZerothIndex != "nil" {
+                    sliderValueArray.append(feedbackAtZerothIndex)
                 }
-                else {
-                    //meaningful content is text
-                    if first == "👍" || first == "👎" { emojiArray.append(first) }
-                    else { sliderValueArray.append(first) }
+                // Case for value being emoji
+                else if feedbackAtFirstIndex == "👍" || feedbackAtFirstIndex == "👎"  {
+                    emojiArray.append(feedbackAtFirstIndex)
                 }
             }
             self.computeSliderAverage(sliderValueArray: sliderValueArray)
-            print(">>>>SLIDR DONE")
             self.computeEmoji(emojiArray: emojiArray)
-            print(">>>>>EMOJI DONE")
         }
     }
     

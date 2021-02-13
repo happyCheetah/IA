@@ -415,7 +415,7 @@
                     <navigationItem key="navigationItem" title="My Classes" id="mop-0C-MQj"/>
                     <connections>
                         <outlet property="addClassButton" destination="g0c-Za-Zf1" id="UhP-wy-r9y"/>
-                        <outlet property="joinClassButton" destination="seF-HV-UE0" id="NOs-Mp-7EF"/>
+                        <outlet property="enrollButton" destination="seF-HV-UE0" id="NOs-Mp-7EF"/>
                         <outlet property="reloadButton" destination="5am-ph-nZT" id="Mrh-l2-mmV"/>
                         <outlet property="tableView" destination="THm-Mh-zWP" id="9Vc-1m-3po"/>
                     </connections>

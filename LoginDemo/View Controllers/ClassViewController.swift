@@ -69,7 +69,7 @@ class ClassViewController: UIViewController, UITextFieldDelegate {
         print("passed")
         print(value)
 //        db.collection("classes").document("5AMKh8fCIFpWTCxnNCYW").setData(["test": "test"])
-        db.collection("classes").document(classID as! String).setData(["feedback": [uid : ["\(value)", "nil", "nil"]]], merge: true) { err in
+        db.collection("classes").document(classID as! String).setData(["feedback": [uid : ["\(value)", "nil"]]], merge: true) { err in
             print("passed")
             if let err = err {
                     print("Error updating document: \(err)")
@@ -92,7 +92,7 @@ class ClassViewController: UIViewController, UITextFieldDelegate {
         }
         
         //send chosen emoji to firebase
-        Firestore.firestore().collection("classes").document(classID as! String).setData(["feedback": [uid : ["nil", emoji, "nil"]]], merge: true ) { err in
+        Firestore.firestore().collection("classes").document(classID as! String).setData(["feedback": [uid : ["nil", emoji]]], merge: true ) { err in
             if let err = err {
                     print("Error updating document: \(err)")
                 } else {

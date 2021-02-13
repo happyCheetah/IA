@@ -35,7 +35,7 @@ class CreateClassViewController: UIViewController {
     //*** IB ACTION ***//
     @IBAction func createClassTapped(_ sender: Any) {
         if classNameTextField.text == "" {
-            var dialogMessage = UIAlertController(title: "Enter class name", message: "No class name entered. Please enter class name.", preferredStyle: .alert)
+            let dialogMessage = UIAlertController(title: "Enter class name", message: "No class name entered. Please enter class name.", preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
                 print("ok tapped")
@@ -47,9 +47,9 @@ class CreateClassViewController: UIViewController {
         
         let className = classNameTextField.text
         //create a new class document
-        Firestore.firestore().collection("classes").addDocument(data: ["className" : className,"teacherName" : teacherName, "participants": [uid], "feedback": [uid: ["nil", "nil", "nil"]]])
+        Firestore.firestore().collection("classes").addDocument(data: ["className" : className!,"teacherName" : teacherName!, "participants": [uid], "feedback": [uid: ["nil", "nil"]]])
         
-        var creationCompleteMessage = UIAlertController(title: "Your new class has been created!", message: "Please return to My Classes and reload.", preferredStyle: .alert)
+        let creationCompleteMessage = UIAlertController(title: "Your new class has been created!", message: "Please return to My Classes and reload.", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
             print("ok tapped")
