@@ -29,9 +29,7 @@ class HomeViewController: UIViewController {
     //*** View Functions ***//
     override func viewDidLoad() {
         super.viewDidLoad()
-        let user = Auth.auth().currentUser
-        userID = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
-        loadLastName()
+        userID = Auth.auth().currentUser?.uid
         loadStatus()
         loadClasses()
     }
@@ -41,23 +39,12 @@ class HomeViewController: UIViewController {
     
     //*** IB ACTION ***//
     @IBAction func reloadTapped(_ sender: Any) {
-        loadLastName()
         loadStatus()
         loadClasses()
     }
     
     //*** FUNCTIONS ***//
-    func loadLastName() {
-        let user = Auth.auth().currentUser
-        let uid = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
-        print("loadLastName(): uid: \(uid)")
-        let userDocument = Firestore.firestore().collection("users").document(uid)
-        userDocument.getDocument { (document, error) in
-            let dataDescription = document?.data()
-            
-            self.lastName = dataDescription!["lastname"] as? String ?? "Guo"
-        }
-    }
+
     
     /* A setter function for the classID variable. */
     public func setClassID(newClassID : String) -> Void {
@@ -65,9 +52,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadStatus() {
-        let user = Auth.auth().currentUser
-        let uid = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
-        Firestore.firestore().collection("users").document(uid).getDocument { (document, error) in
+        Firestore.firestore().collection("users").document(userID!).getDocument { (document, error) in
             if error != nil {
                 print(error!)
                 return
@@ -93,9 +78,9 @@ class HomeViewController: UIViewController {
     func loadClasses(){
         classes = []
         classIDArray = []
-        let user = Auth.auth().currentUser
-        let uid = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
-        Firestore.firestore().collection("classes").whereField("participants", arrayContains: uid).getDocuments { (querySnapshot, error) in
+//        let user = Auth.auth().currentUser
+//        let uid = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
+        Firestore.firestore().collection("classes").whereField("participants", arrayContains: userID!).getDocuments { (querySnapshot, error) in
             // http://www.swiftarchive.org/optional-binding-if-let-x-x-td409.html explanation of if let x = x
             if let error = error {
                 print("Error was:  \(error)")
@@ -192,7 +177,6 @@ class HomeViewController: UIViewController {
         
         if segue.identifier == "homeToCreate" {
             guard let createVC = segue.destination as? CreateClassViewController else { return }
-            createVC.teacherName = self.lastName
             createVC.uid = self.userID
         }
         

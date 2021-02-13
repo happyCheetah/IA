@@ -20,7 +20,16 @@ class CreateClassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(teacherName)
+        loadLastName()
+    }
+    
+    //*** FUNCTIONS ***//
+    func loadLastName() {
+        let userDocument = Firestore.firestore().collection("users").document(uid!)
+        userDocument.getDocument { (document, error) in
+            let dataDescription = document?.data()
+            self.teacherName = dataDescription!["lastname"] as? String ?? "Smith"
+        }
     }
     
     //*** IB ACTION ***//
