@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     var className : String?
     // classID is the name of a class's document - assigned automatically by Firestore
     var classID : String?
-    
+    var classIDArray: [String] = []
     
     //*** View Functions ***//
     override func viewDidLoad() {
@@ -121,6 +121,7 @@ class HomeViewController: UIViewController {
                             let currentClass = Class.init(teacherName: currentClassTeacherName, className: self.className!, displayForTeacher: status)
                    
                             self.classes.append(currentClass)
+                            self.classIDArray.append(classDocument.documentID)
                         }
                     }
                     self.tableView.reloadData()
@@ -136,6 +137,7 @@ class HomeViewController: UIViewController {
             guard let classVC = segue.destination as? ClassViewController else { return }
             classVC.classID = self.classID
             classVC.title = className
+            print("CLASSNAME >> \(className), CLASSID >> \(classID)")
         }
         
         if segue.identifier == "homeToCreate" {
@@ -153,6 +155,7 @@ class HomeViewController: UIViewController {
             guard let teachVC = segue.destination as? TeacherViewViewController else {return}
             teachVC.classID = self.classID
             teachVC.title = className
+            print("CLASSNAME >> \(className), CLASSID >> \(classID)")
         }
     }
 }
@@ -181,16 +184,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        className = classes[indexPath.row].className
+        classID = classIDArray[indexPath.row]
+        
         if isTeacher == false {
-            tableView.deselectRow(at: indexPath, animated: true)
-            className = classes[indexPath.row].className
             performSegue(withIdentifier: "homeToClass", sender: self)
         }
         else {
-            tableView.deselectRow(at: indexPath, animated: true)
-            className = classes[indexPath.row].className
             performSegue(withIdentifier: "homeToTeach", sender: self)
         }
-
     }
 }

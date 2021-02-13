@@ -27,7 +27,7 @@ class TeacherViewViewController: UIViewController {
     }
     
     func addSnapShotListener() {
-        Firestore.firestore().collection("classes").document("5AMKh8fCIFpWTCxnNCYW").addSnapshotListener { (documentSnapshot, error) in
+        Firestore.firestore().collection("classes").document(classID!).addSnapshotListener { (documentSnapshot, error) in
             guard let document = documentSnapshot else {
                 print("Error: \(error!)")
                 return
