@@ -23,28 +23,47 @@ class EnrollinClassViewController: UIViewController, UIPickerViewDelegate, UIPic
 
         self.classPicker.delegate = self
         self.classPicker.dataSource = self
-        
-        
         getClassNames()
+    }
+    
+    //*** IB OUTLETS ***///
+    @IBAction func joinClassTapped(_ sender: Any) {
+        
+        //get current selection from pickerview
+        let selected = classPicker.selectedRow(inComponent: 0)
+        let classID = classIDs[selected]
+        
+        //check if student has already joined by querying students array
+        Firestore.firestore().collection("classes").document(classID).getDocument { (document, error) in
+            let data = document?.data()
+            let studentArray = data!["students"] as! NSArray
+            if studentArray.contains(self.uid!) {
+                //Display alert
+                let dialogMessage = UIAlertController(title: "Already Enrolled!", message: "You are already enrolled in this class!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
+                    print("ok tapped")
+                })
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
+                return
+            }
+        }
+        Firestore.firestore().collection("classes").document(classID).updateData(["students": FieldValue.arrayUnion([uid!])])
     }
     
     //*** FUNCTIONS ***//
     func getClassNames() {
-        
         // query firebase for all documents in classes collection
-        let classes = Firestore.firestore().collection("classes").getDocuments { (querySnapshot, error) in
-            
-            //iterate for each document
+        Firestore.firestore().collection("classes").getDocuments { (querySnapshot, error) in
+            //iterate through each class document in 
             if error == nil && querySnapshot != nil {
                 for document in querySnapshot!.documents {
-                    let documentData = document.data()
-                  
+                
                     self.pickerData.append(document["className"] as! String)
                     self.classIDs.append(document.documentID)
                 }
             }
             self.classPicker.reloadAllComponents()
-            print(self.pickerData)
         } 
     }
     
@@ -62,31 +81,6 @@ class EnrollinClassViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
-    }
-    
-    @IBAction func joinClassTapped(_ sender: Any) {
-        
-        //get current selection from pickerview
-        let selected = classPicker.selectedRow(inComponent: 0)
-        let classID = classIDs[selected]
-        
-        //check if student has already joined by querying students array
-        Firestore.firestore().collection("classes").document(classID).getDocument { (document, error) in
-            let data = document?.data()
-            let studentArray = data!["students"] as! NSArray
-            if studentArray.contains(self.uid) {
-                var dialogMessage = UIAlertController(title: "Already Enrolled!", message: "You are already enrolled in this class!", preferredStyle: .alert)
-                
-                let ok = UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
-                    print("ok tapped")
-                })
-                
-                dialogMessage.addAction(ok)
-                self.present(dialogMessage, animated: true, completion: nil)
-                return
-            }
-        }
-        Firestore.firestore().collection("classes").document(classID).updateData(["students": FieldValue.arrayUnion([uid as! String])])
     }
 }
 
