@@ -32,10 +32,10 @@ class EnrollinClassViewController: UIViewController, UIPickerViewDelegate, UIPic
         let selected = classPicker.selectedRow(inComponent: 0)
         let classID = classIDs[selected]
 
-        //check if student has already joined by querying students array
+        //check if student has already joined by querying participants array
         Firestore.firestore().collection("classes").document(classID).getDocument { (document, error) in
             let data = document?.data()
-            let studentArray = data!["students"] as! NSArray
+            let studentArray = data!["participants"] as! NSArray
             if studentArray.contains(self.uid!) {
                 //Display alert
                 let alreadyEnrolledDialogMessage = UIAlertController(title: "Already Enrolled!", message: "You are already enrolled in this class!", preferredStyle: .alert)
@@ -46,7 +46,7 @@ class EnrollinClassViewController: UIViewController, UIPickerViewDelegate, UIPic
             }
             else {
                 //Add student to chosen class's student list
-                Firestore.firestore().collection("classes").document(classID).updateData(["students": FieldValue.arrayUnion([self.uid!])])
+                Firestore.firestore().collection("classes").document(classID).updateData(["participants": FieldValue.arrayUnion([self.uid!])])
                 //Display alert acknowledging enrollement
                 let enrolledDialogMessage = UIAlertController(title: "Enrolled!", message: "Please go back to My Classes and Reload.", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Got it!", style: .default, handler: nil)

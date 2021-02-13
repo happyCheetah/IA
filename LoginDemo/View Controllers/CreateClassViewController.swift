@@ -38,6 +38,15 @@ class CreateClassViewController: UIViewController {
         
         let className = classNameTextField.text
         //create a new class document
-        Firestore.firestore().collection("classes").addDocument(data: ["className" : className,"teacherName" : teacherName, "students": [uid]])
+        Firestore.firestore().collection("classes").addDocument(data: ["className" : className,"teacherName" : teacherName, "participants": [uid], "feedback": [uid: ["nil", "nil", "nil"]]])
+        
+        var creationCompleteMessage = UIAlertController(title: "Your new class has been created!", message: "Please return to My Classes and reload.", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
+            print("ok tapped")
+        })
+        
+        creationCompleteMessage.addAction(ok)
+        self.present(creationCompleteMessage, animated: true, completion: nil)
     }
 }

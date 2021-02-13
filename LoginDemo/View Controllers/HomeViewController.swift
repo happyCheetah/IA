@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         let user = Auth.auth().currentUser
         userID = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
-        
+        loadLastName()
         loadStatus()
         loadClasses()
     }
@@ -41,6 +41,7 @@ class HomeViewController: UIViewController {
     
     //*** IB ACTION ***//
     @IBAction func reloadTapped(_ sender: Any) {
+        loadLastName()
         loadStatus()
         loadClasses()
     }
@@ -90,9 +91,11 @@ class HomeViewController: UIViewController {
     }
     
     func loadClasses(){
+        classes = []
+        classIDArray = []
         let user = Auth.auth().currentUser
         let uid = user?.uid ?? "GpNGDPCK3ZN7hKlQJvzzkdgHPci1"
-        Firestore.firestore().collection("classes").whereField("students", arrayContains: uid).getDocuments { (querySnapshot, error) in
+        Firestore.firestore().collection("classes").whereField("participants", arrayContains: uid).getDocuments { (querySnapshot, error) in
             // http://www.swiftarchive.org/optional-binding-if-let-x-x-td409.html explanation of if let x = x
             if let error = error {
                 print("Error was:  \(error)")
