@@ -23,16 +23,7 @@ class ClassCell: UITableViewCell {
         self.joinSessionButton.isHidden = true
         self.startSessionButton.isHidden = true
         
-        if cell.displayForTeacher == "0" {
-            //setup UI for student
-//            self.joinSessionButton.isHidden = false
-            
-        }
-        else {
-            //setup UI for teacher
-//            self.isUserInteractionEnabled = 
-//            self.startSessionButton.isHidden = false
-        }
+        
     }
     
     @IBAction func joinSessionTapped(_ sender: Any) {

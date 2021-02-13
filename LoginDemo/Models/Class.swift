@@ -10,12 +10,11 @@ import Foundation
 class Class {
     var teacherName: String
     var className: String
-    var displayForTeacher: String
     
     
-    init(teacherName: String, className: String, displayForTeacher: String) {
+    init(teacherName: String, className: String) {
         self.teacherName = teacherName
         self.className = className
-        self.displayForTeacher = displayForTeacher
+        
     }
 }

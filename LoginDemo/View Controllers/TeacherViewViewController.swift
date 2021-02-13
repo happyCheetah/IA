@@ -83,7 +83,6 @@ class TeacherViewViewController: UIViewController {
                 
             }
             
-            
             //compute emoji
             var thumbsUpCount = 0
             var thumbsDownCount = 0

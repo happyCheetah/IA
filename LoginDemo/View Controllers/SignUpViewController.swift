@@ -73,7 +73,8 @@ class SignUpViewController: UIViewController {
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let status = studentOrTeacherSegmentedControl.selectedSegmentIndex
+            let status = "\(studentOrTeacherSegmentedControl.selectedSegmentIndex)"
+            print("STATUS >>>> \(status)")
             
             // create user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -107,11 +108,18 @@ class SignUpViewController: UIViewController {
     func transitionToHome () {
         /* Transition from SignUpViewController to HomeViewController */
         
-        // Create an instance of HomeViewController
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+//        // Create an instance of HomeViewController
+//        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+//
+//        // Set homeViewController as the root view controller and show it
+//        view.window?.rootViewController = homeViewController
+//        view.window?.makeKeyAndVisible()
         
-        // Set homeViewController as the root view controller and show it
-        view.window?.rootViewController = homeViewController
-        view.window?.makeKeyAndVisible()
+        //login successful, hence show next view controller
+        let tabViewController = self.storyboard?.instantiateViewController(identifier: "tabVC") as? TabBarController
+        
+        //make homeViewController the root view controller
+        self.view.window?.rootViewController = tabViewController
+        self.view.window?.makeKeyAndVisible()
     }
 }
