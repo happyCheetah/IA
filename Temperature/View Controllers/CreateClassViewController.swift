@@ -43,6 +43,7 @@ class CreateClassViewController: UIViewController {
             
             dialogMessage.addAction(ok)
             self.present(dialogMessage, animated: true, completion: nil)
+            return
         }
         
         let className = classNameTextField.text

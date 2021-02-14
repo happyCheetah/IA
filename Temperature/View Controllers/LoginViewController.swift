@@ -36,8 +36,6 @@ class LoginViewController: UIViewController {
             return
         }
         
-
-        
         //process data such that whitespaces and new lines are removed
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -17,13 +17,13 @@
 		320E72D2258DF44D00927E30 /* LoginDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320E72D1258DF44D00927E30 /* LoginDemoUITests.swift */; };
 		320E72E3258DF4A100927E30 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320E72E2258DF4A100927E30 /* SignUpViewController.swift */; };
 		320E72E8258DF4B000927E30 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320E72E7258DF4B000927E30 /* LoginViewController.swift */; };
-		320E72ED258DF4BC00927E30 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320E72EC258DF4BC00927E30 /* HomeViewController.swift */; };
+		320E72ED258DF4BC00927E30 /* MyClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320E72EC258DF4BC00927E30 /* MyClassesViewController.swift */; };
 		3217A7BA258E110700771B6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3217A7B9258E110700771B6A /* Utilities.swift */; };
 		322B2CDF259898EA00CD426B /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322B2CDE259898EA00CD426B /* ClassCell.swift */; };
 		322B2CE52598996500CD426B /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322B2CE42598996500CD426B /* Class.swift */; };
+		3231385825D8FB48008F3271 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3231385725D8FB47008F3271 /* README.txt */; };
 		3248A99325AF5786000BDD5D /* CreateClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3248A99225AF5786000BDD5D /* CreateClassViewController.swift */; };
 		3257356F25AB33C70044EEC8 /* ClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3257356E25AB33C70044EEC8 /* ClassViewController.swift */; };
-		328EC1FC258F249B0061E0A3 /* Constands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EC1FB258F249B0061E0A3 /* Constands.swift */; };
 		3292BB2525A3EE1000659DA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3292BB2325A3EE1000659DA7 /* Main.storyboard */; };
 		32950AE925ADEF2E001FB681 /* DJI_0016.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 32950AE825ADEF2E001FB681 /* DJI_0016.MOV */; };
 		32968FCC25ADD40A00B6F3AD /* TeacherViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32968FCB25ADD40A00B6F3AD /* TeacherViewViewController.swift */; };
@@ -70,14 +70,14 @@
 		320E72D3258DF44D00927E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		320E72E2258DF4A100927E30 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		320E72E7258DF4B000927E30 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		320E72EC258DF4BC00927E30 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		320E72EC258DF4BC00927E30 /* MyClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClassesViewController.swift; sourceTree = "<group>"; };
 		3217A7B9258E110700771B6A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		322B2CDE259898EA00CD426B /* ClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
 		322B2CE42598996500CD426B /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
+		3231385725D8FB47008F3271 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		3248A99225AF5786000BDD5D /* CreateClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClassViewController.swift; sourceTree = "<group>"; };
 		3257356E25AB33C70044EEC8 /* ClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassViewController.swift; sourceTree = "<group>"; };
 		32762EAC25D7E00900F34342 /* Temperature.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Temperature.entitlements; sourceTree = "<group>"; };
-		328EC1FB258F249B0061E0A3 /* Constands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constands.swift; sourceTree = "<group>"; };
 		3292BB2425A3EE1000659DA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LoginDemo/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32950AE825ADEF2E001FB681 /* DJI_0016.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = DJI_0016.MOV; sourceTree = "<group>"; };
 		32968FCB25ADD40A00B6F3AD /* TeacherViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +131,7 @@
 		320E72A3258DF44C00927E30 = {
 			isa = PBXGroup;
 			children = (
+				3231385725D8FB47008F3271 /* README.txt */,
 				320E72AE258DF44C00927E30 /* Temperature */,
 				320E72C5258DF44D00927E30 /* TemperatureTests */,
 				320E72D0258DF44D00927E30 /* TemperatureUITests */,
@@ -193,7 +194,7 @@
 				320E72E2258DF4A100927E30 /* SignUpViewController.swift */,
 				32C64BE825D61723006A0910 /* TabBarController.swift */,
 				320E72E7258DF4B000927E30 /* LoginViewController.swift */,
-				320E72EC258DF4BC00927E30 /* HomeViewController.swift */,
+				320E72EC258DF4BC00927E30 /* MyClassesViewController.swift */,
 				320E72B3258DF44C00927E30 /* ViewController.swift */,
 				322B2CDE259898EA00CD426B /* ClassCell.swift */,
 				3257356E25AB33C70044EEC8 /* ClassViewController.swift */,
@@ -208,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				3217A7B9258E110700771B6A /* Utilities.swift */,
-				328EC1FB258F249B0061E0A3 /* Constands.swift */,
 				32EFC7B02594E38E00F0CF8F /* VideoPlayerLooped.swift */,
 			);
 			path = Helpers;
@@ -371,6 +371,7 @@
 				320E72BC258DF44D00927E30 /* LaunchScreen.storyboard in Resources */,
 				329E82D5258E1648007F0AE3 /* GoogleService-Info.plist in Resources */,
 				3292BB2525A3EE1000659DA7 /* Main.storyboard in Resources */,
+				3231385825D8FB48008F3271 /* README.txt in Resources */,
 				320E72B9258DF44D00927E30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,8 +514,7 @@
 				32968FCC25ADD40A00B6F3AD /* TeacherViewViewController.swift in Sources */,
 				320E72E8258DF4B000927E30 /* LoginViewController.swift in Sources */,
 				320E72B2258DF44C00927E30 /* SceneDelegate.swift in Sources */,
-				320E72ED258DF4BC00927E30 /* HomeViewController.swift in Sources */,
-				328EC1FC258F249B0061E0A3 /* Constands.swift in Sources */,
+				320E72ED258DF4BC00927E30 /* MyClassesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

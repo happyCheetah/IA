@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController {
+class MyClassesViewController: UIViewController {
     
     //*** IB OUTLET ***//
     @IBOutlet weak var tableView: UITableView!
@@ -134,7 +134,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension MyClassesViewController: UITableViewDataSource, UITableViewDelegate {
     /* code below comes from video: https://www.youtube.com/watch?v=1HN7usMROt8&ab_channel=CodeWithChris */
     
     //the number of rows should be the number of classes the student is enrolled in

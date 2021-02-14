@@ -27,12 +27,8 @@ class ClassCell: UITableViewCell {
     }
     
     @IBAction func joinSessionTapped(_ sender: Any) {
-        print("className is >>> \(className.text)")
-//        let classVC = ClassViewController.init(className: className.text!)
-        
 
     }
-    
 }
 
 

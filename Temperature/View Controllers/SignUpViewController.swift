@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var studentOrTeacherSegmentedControl: UISegmentedControl!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,11 +31,6 @@ class SignUpViewController: UIViewController {
     /* style buttons and text fields accordingly  */
     func setUpElements() {
         errorLabel.alpha = 0
-        
-//        Utilities.styleTextField(firstNameTextField)
-//        Utilities.styleTextField(lastNameTextField)
-//        Utilities.styleTextField(emailTextField)
-//        Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signUpButton)
     }
 
@@ -51,7 +45,11 @@ class SignUpViewController: UIViewController {
         //check if password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if Utilities.isPasswordValid(cleanedPassword) == false {
+        
+        if !(emailTextField.text?.contains("@"))! {
+            return "Please format email correctly"
+        }
+        else if Utilities.isPasswordValid(cleanedPassword) == false {
             return "Please make sure your password is at least 8 char, 1 special char, and 1 number"
         }
         return nil
@@ -74,7 +72,6 @@ class SignUpViewController: UIViewController {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let status = "\(studentOrTeacherSegmentedControl.selectedSegmentIndex)"
-            print("STATUS >>>> \(status)")
             
             // create user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -104,17 +101,8 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
-    
     func transitionToHome () {
         /* Transition from SignUpViewController to HomeViewController */
-        
-//        // Create an instance of HomeViewController
-//        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-//
-//        // Set homeViewController as the root view controller and show it
-//        view.window?.rootViewController = homeViewController
-//        view.window?.makeKeyAndVisible()
-        
         //login successful, hence show next view controller
         let tabViewController = self.storyboard?.instantiateViewController(identifier: "tabVC") as? TabBarController
         
